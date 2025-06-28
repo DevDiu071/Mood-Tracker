@@ -1,4 +1,8 @@
+"use client";
+
 import React from "react";
+import Barchart from "./Barchart";
+import LineChart from "./LineChart";
 
 function MoodAndSleepStats() {
   return (
@@ -6,6 +10,7 @@ function MoodAndSleepStats() {
       <h3 className="text-[28px] md:text-[32px] font-bold mb-5">
         Mood and Sleep Trends
       </h3>
+      <Barchart />
     </div>
   );
 }

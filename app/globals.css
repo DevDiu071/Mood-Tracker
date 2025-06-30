@@ -5,6 +5,8 @@
   --color-mood-bg: #e0e6fa;
   --color-stroke: #e0e6fa;
   --color-text-color: #57577b;
+  --color-gradient: linear-gradient(180deg, #f5f5ff, #e0e0ff);
+  --gradient-custom-gradient: linear-gradient(180deg, #f5f5ff, #e0e0ff);
 
   --breakpoint-xmd: 1100px;
   --breakpoint-sm: 640px;

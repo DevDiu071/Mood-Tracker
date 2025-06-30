@@ -5,28 +5,30 @@ import {
   XAxis,
   BarChart as BarGrahp,
   ResponsiveContainer,
-  Tooltip,
+  Cell,
+  ReferenceLine,
 } from "recharts";
 
 import React from "react";
+import EmojiLabel from "./EmojiLabel";
 
 const data = [
-  { date: "March 31", hours: 5, mood: "sad" },
-  { date: "April 02", hours: 7, mood: "calm" },
-  { date: "April 10", hours: 4, mood: "calm" },
-  { date: "April 12", hours: 6, mood: "sad" },
-  { date: "April 13", hours: 7, mood: "neutral" },
-  { date: "April 10", hours: 4, mood: "calm" },
-  { date: "April 12", hours: 6, mood: "sad" },
-  { date: "April 13", hours: 7, mood: "neutral" },
-  { date: "April 14", hours: 3, mood: "sad" },
-  { date: "April 15", hours: 3, mood: "sad" },
+  { date: "March 31", hours: 5, mood: 2 },
+  { date: "April 02", hours: 7, mood: 1 },
+  { date: "April 10", hours: 5, mood: -1 },
+  { date: "April 12", hours: 9, mood: 2 },
+  { date: "April 13", hours: 7, mood: 1 },
+  { date: "April 10", hours: 5, mood: -1 },
+  { date: "April 12", hours: 6, mood: 0 },
+  { date: "April 13", hours: 7, mood: 1 },
+  { date: "April 14", hours: 3, mood: -2 },
+  { date: "April 15", hours: 1, mood: -2 },
 ];
 
 function Barchart() {
   return (
     <div>
-      <ResponsiveContainer width={"100%"} height={300}>
+      <ResponsiveContainer width={"100%"} height={330}>
         <BarGrahp data={data} margin={{ top: 0, right: 0, bottom: 5, left: 0 }}>
           <YAxis
             dataKey={"hours"}
@@ -68,7 +70,11 @@ function Barchart() {
             }}
             ticks={[1, 3, 5, 7, 9]} // This decides where the labels appear
             width={80}
+            domain={[0, 10]}
           />
+          {[1, 3, 5, 7, 9].map((y, i) => (
+            <ReferenceLine key={i} y={y} stroke="#ddd" strokeWidth={1} />
+          ))}
           <XAxis
             dataKey={"date"}
             tickLine={false}
@@ -98,10 +104,35 @@ function Barchart() {
           />
           <Bar
             dataKey="hours"
-            fill="#60A5FA"
-            radius={[25, 25, 25, 25]}
+            radius={[50, 50, 25, 25]}
             barSize={40}
-          />
+            label={(props) => (
+              <EmojiLabel
+                x={props.x}
+                y={props.y}
+                width={props.width}
+                mood={data[props.index].mood}
+              />
+            )}
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={
+                  entry.mood === 2
+                    ? "#FFC97C" // Yellow
+                    : entry.mood === 1
+                    ? "#89E780" // Green
+                    : entry.mood === 0
+                    ? "#B8B1FF" // Blue
+                    : entry.mood === -1
+                    ? "#89CAFF" // Purple
+                    : "#FF9B99" // Red
+                }
+              />
+            ))}
+          </Bar>
+          {/* <CartesianGrid horizontal={true} vertical={false} /> */}
         </BarGrahp>
       </ResponsiveContainer>
     </div>

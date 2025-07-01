@@ -3,6 +3,7 @@ import Navbar from "./_components/Navbar";
 import Home from "./_components/Home";
 import DashBoard from "./_components/DashBoard";
 import LogMoodContainer from "./_components/LogMoodContainer";
+import Overlay from "./_components/Overlay";
 
 function Page() {
   return (

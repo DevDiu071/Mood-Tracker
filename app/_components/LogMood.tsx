@@ -5,7 +5,7 @@ function LogMood() {
   const moods = ["Very Happy", "Happy", "Neutral", "Sad", "Very Sad"];
   return (
     <div>
-      <h1 className="text-[28px] font-bold my-[24px]">
+      <h1 className="text-[28px] sm:text-[32px] font-bold my-[24px]">
         How was your mood today?
       </h1>
       {moods.map((mood, index) => (
@@ -36,6 +36,12 @@ function LogMood() {
           />
         </div>
       ))}
+      <button
+        type="button"
+        className="text-5 flex flex-col w-full justify-center mx-auto mt-[32px] rounded-[10px] cursor-pointer bg-blue text-white py-4 px-[32px] font-semibold"
+      >
+        Continue
+      </button>
     </div>
   );
 }

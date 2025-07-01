@@ -5,13 +5,14 @@
   --color-mood-bg: #e0e6fa;
   --color-stroke: #e0e6fa;
   --color-text-color: #57577b;
+  --color-bg-overlay: #21214d;
   --color-gradient: linear-gradient(180deg, #f5f5ff, #e0e0ff);
   --gradient-custom-gradient: linear-gradient(180deg, #f5f5ff, #e0e0ff);
 
-  --breakpoint-xmd: 1100px;
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
+  --breakpoint-xmd: 1100px;
   --breakpoint-xl: 1280px;
   --breakpoint-xlarger: 1330px;
 }

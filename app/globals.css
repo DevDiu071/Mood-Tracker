@@ -6,7 +6,11 @@
   --color-stroke: #e0e6fa;
   --color-text-color: #57577b;
   --color-bg-overlay: #21214d;
+  --color-textbox-color: #9393b7;
   --color-gradient: linear-gradient(180deg, #f5f5ff, #e0e0ff);
+  --color-blue-600: #4865db;
+  --color-blue-200: #c7d3f7;
+  --color-blue-100: #e0e6fa;
   --gradient-custom-gradient: linear-gradient(180deg, #f5f5ff, #e0e0ff);
 
   --breakpoint-sm: 640px;

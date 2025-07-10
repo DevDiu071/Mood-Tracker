@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
+import { useMood } from "../_providers/MoodProvider";
+import clsx from "clsx";
 
 function LogMood() {
+  const { selectedMood, setSelectedMood } = useMood();
   const moods = ["Very Happy", "Happy", "Neutral", "Sad", "Very Sad"];
   return (
     <div>
@@ -10,8 +15,12 @@ function LogMood() {
       </h1>
       {moods.map((mood, index) => (
         <div
+          onClick={() => setSelectedMood(mood)}
           key={index}
-          className="flex items-center justify-between border border-mood-bg mb-3 py-[12px] rounded-[10px] px-[20px] gap-x-4"
+          className={clsx(
+            "flex items-center justify-between cursor-pointer border-[2px] border-mood-bg mb-3 py-[12px] rounded-[10px] px-[20px] gap-x-4",
+            { "!border-blue-600": selectedMood === moods[index] }
+          )}
         >
           <div className="flex items-center gap-x-2">
             <input
@@ -19,7 +28,12 @@ function LogMood() {
               id={mood}
               name="mood"
               value={mood}
-              className="w-5 h-5 accent-blue"
+              onChange={() => setSelectedMood(mood)}
+              checked={selectedMood === moods[index]}
+              className={clsx(
+                "w-5 appearance-none border-2 border-mood-bg rounded-full h-5 accent-blue",
+                { "border-5 !border-blue-600": selectedMood === moods[index] }
+              )}
             />
             <label htmlFor={mood} className="text-[20px] font-semibold">
               {mood}
@@ -36,12 +50,6 @@ function LogMood() {
           />
         </div>
       ))}
-      <button
-        type="button"
-        className="text-5 flex flex-col w-full justify-center mx-auto mt-[32px] rounded-[10px] cursor-pointer bg-blue text-white py-4 px-[32px] font-semibold"
-      >
-        Continue
-      </button>
     </div>
   );
 }
